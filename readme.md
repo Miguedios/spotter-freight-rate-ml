@@ -1,5 +1,8 @@
 # Freight Rate Prediction Challenge
 
+🎥 Loom walkthrough: _add link here after recording_
+📄 Full report: [`report/Freight_Rate_ML_Report_Miguelangel_Mosquera.pdf`](report/Freight_Rate_ML_Report_Miguelangel_Mosquera.pdf)
+
 See `Freight_Rate_ML_Assessment.pdf` for the assessment instructions.
 
 ## What to do
@@ -44,6 +47,10 @@ Two models are trained:
 | Gradient Boosting | $159.37 | 0.814 | **$154.00** | **0.816** |
 
 Bold = selected model (lowest MAE on the October holdout) for each use case.
+
+![December 2025 predicted rate for the Lexington to Fort Wayne lane](scorer_results/candidate_december.png)
+
+The lane model recovers a weekly cycle — higher mid-week, lower on weekends — consistent with the day-of-week effect observed in the historical rate-per-mile data for this route.
 
 ## Key design decisions
 
