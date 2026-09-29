@@ -35,6 +35,23 @@ Two models are trained:
 - `full_model`: uses every feature available in `data/validation.csv` (distance, weight, coordinates, equipment, date, market index, quote signal) to score the 12,000 validation loads.
 - `lane_model`: uses only the features available in `data/december_chart_inputs.csv` (distance, weight, equipment, pickup/delivery city, date) — `market_index` and `quote_signal` are not provided for December, so a second model is trained without them instead of guessing their values.
 
+## Results (chronological holdout — October 2025)
+
+| Model | Full model MAE | Full model R² | Lane model MAE | Lane model R² |
+|---|---|---|---|---|
+| Linear Regression | **$141.74** | **0.818** | $172.61 | 0.816 |
+| Random Forest | $287.50 | 0.740 | $218.74 | 0.757 |
+| Gradient Boosting | $159.37 | 0.814 | **$154.00** | **0.816** |
+
+Bold = selected model (lowest MAE on the October holdout) for each use case.
+
+## Key design decisions
+
+- **Chronological split, not random/k-fold.** Training on January–September and holding out October mirrors the real task — forecasting a future period from a past one — and avoids leaking market conditions from the test period into training.
+- **Coordinates instead of city names for the full model.** `validation.csv` contains 8 pickup/delivery cities (Chicago, Norfolk, San Diego, Charlotte, Knoxville, Allentown, Laredo, Jackson) that never appear in `train_test.csv`. One-hot encoding city names would give the model no signal for these rows; continuous latitude/longitude lets it generalize geographically instead.
+- **Two models, not one.** `december_chart_inputs.csv` doesn't include `market_index`, `quote_signal`, or coordinates. Rather than invent values for missing columns, `lane_model` is trained on the same 48,000 rows using only the columns that file actually provides.
+- **Raw data is intentionally not committed** (see `.gitignore`) — it was shared for this assessment, not for public redistribution.
+
 ## How to run
 
 ```bash
