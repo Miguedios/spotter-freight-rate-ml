@@ -1,6 +1,6 @@
 # Freight Rate Prediction Challenge
 
-🎥 Loom walkthrough: _add link here after recording_
+# 🎥 Loom walkthrough: https://www.loom.com/share/3990d88971344172921c6cd0c919d5dc
 📄 Full report: [`report/Freight_Rate_ML_Report_Miguelangel_Mosquera.pdf`](report/Freight_Rate_ML_Report_Miguelangel_Mosquera.pdf)
 
 See `Freight_Rate_ML_Assessment.pdf` for the assessment instructions.
