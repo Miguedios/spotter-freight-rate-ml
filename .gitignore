@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.pyc
+scratchpad/
+models/
+data/*.csv
+freight-rate-ml-assessment.pdf
+/train-test.csv
+/validation.csv
+/validation-predictions-template.csv
+/december-chart-inputs.csv
+/validation_predictions.csv
+/december_predictions.csv
+/scorer_results/
+/Freight_Rate_ML_Report_Miguelangel_Mosquera.pdf
+
